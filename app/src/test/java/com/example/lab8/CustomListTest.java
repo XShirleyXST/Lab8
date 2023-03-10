@@ -48,20 +48,10 @@ public class CustomListTest {
         City cityToDelete = new City("Edmonton", "AB");
         list.addCity(cityToDelete);
         int listSizeBeforeDeletion = list.getCount();
-
-        // Check if the city is present in the list before deletion
         assertTrue(list.hasCity(cityToDelete));
-
-        // Delete the city from the list
         list.delete(cityToDelete);
-
-        // Check if the city is no longer present in the list
         assertFalse(list.hasCity(cityToDelete));
-
-        // Check if the size of the list has decreased by 1 after deletion
         assertEquals(listSizeBeforeDeletion - 1, list.getCount());
-
-        // Check if an exception is thrown if we try to delete the same city again
         assertThrows(IllegalArgumentException.class, () -> {
             list.delete(cityToDelete);
         });
