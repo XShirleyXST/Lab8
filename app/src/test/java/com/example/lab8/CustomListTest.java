@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 //import org.junit.Before;
 import android.util.Log;
 
+import androidx.core.widget.TextViewCompat;
+
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
@@ -55,5 +57,17 @@ public class CustomListTest {
         assertThrows(IllegalArgumentException.class, () -> {
             list.delete(cityToDelete);
         });
+    }
+
+    @Test
+    public void testCountCities(){
+        list = MockCityList();
+        assertEquals(list.countCities(), 0);
+        list.addCity(new City("Estevan", "SK"));
+        list.addCity(new City("Regina", "SK"));
+        list.addCity(new City("Winnipeg", "MB"));
+        assertEquals(list.countCities(), 3);
+        list.addCity(new City("Vancouver", "BC"));
+        assertEquals(list.countCities(), 4);
     }
 }
